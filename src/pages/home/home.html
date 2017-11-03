@@ -1,14 +1,38 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+<ion-header >
+    <ion-navbar color="verde">
+            <ion-title>
+                    <img src="assets/img/logo.png" width="30" height="40" />
+            </ion-title>
+            <button ion-button menuToggle end>
+                    <ion-icon name="menu"></ion-icon>
+            </button>              
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <br/><b><i>Bienvenido</i></b><br/>
+    <p align="justify">Esta aplicación le permitira comunicar sus inquietudes y percepciones respecto de los servicios brindados por la universidad.
+        </p><br/>
+    <i><p align="center">La uni te escucha...y te da soluciones! </p></i>
+    <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    <button color="verdea" ion-button icon-only full large (click)="servicios()">
+     Acceso Manual
+      <ion-icon name="hand"></ion-icon>
+    </button>
+    <br/>
+    <button color="verdea" ion-button icon-only full  large (click)="scan()">
+        Codigo QR     
+        <ion-icon name="expand"></ion-icon>
+    </button>
+
+    <!--<div *ngIf="scanData">
+        <p>Scanned Text : </p>
+        <p>Scanned Format : </p>
+    </div>-->
+
+    <ion-footer>
+        <ion-toolbar color="amarillo">
+            <ion-title><img src="assets/img/logoinf.png" width="110" height="20" /></ion-title>
+        </ion-toolbar>
+    </ion-footer>
 </ion-content>

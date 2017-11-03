@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar color="verde">
+        <ion-title>
+            <img src="assets/img/logo.png" width="30" height="40" />
+        </ion-title>
+        <button ion-button menuToggle end>
+                        <ion-icon name="menu"></ion-icon>
+                    </button>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row text-center>
+            <ion-col col-3 col-md-3 col-xl-3 *ngFor="let icono of iconos">
+                <div class="image-container" 
+                [style.background-image]="'url(assets/servicios/'+icono.iconoservicios+'.png)'"  
+                (click)="valoraciones(user.iconoservicios)"></div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-footer>
+        <ion-toolbar color="amarillo">
+            <ion-title>Servicios</ion-title>
+        </ion-toolbar>
+    </ion-footer>
+</ion-content>
