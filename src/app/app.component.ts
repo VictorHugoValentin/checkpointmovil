@@ -6,9 +6,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { MisvaloracionesPage } from '../pages/misvaloraciones/misvaloraciones';
 import { AcercaPage } from '../pages/acerca/acerca';
-import { Sqlite } from '../providers/sqlite/sqlite';
+import { DatabaseProvider } from '../providers/database/database';
 import { SQLite } from '@ionic-native/sqlite';
 import { ServiceProvider } from '../providers/service/service';
+//import { OnInit } from '@angular/core';
 
 @Component({
   templateUrl: 'app.html'
@@ -23,7 +24,7 @@ export class MyApp {
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen,
-              public sqlite: Sqlite,
+              public databaseProvider: DatabaseProvider,
               public SQLite: SQLite,
               public service: ServiceProvider) {
   this.initializeApp();
@@ -40,19 +41,20 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       //this.createDatabase();
+      //this.ngOnInit();
       //this.obtenerDatosExternos();
-      //this.cargarAlmacenamientoInterno(this.datos);
+     //this.cargarAlmacenamientoInterno(this.datos);
     });
   }
-  /*
-  private createDatabase(){
+  
+  /*private createDatabase(){
     this.SQLite.create({
       name: 'data.db',
       location: 'default' // the location field is required
     })
     .then((db) => {
-      this.sqlite.setDatabase(db);
-      return this.sqlite.createTable();
+      this.sqliteInterna.setDatabase(db);
+      return this.sqliteInterna.createTable();
     })
     .then(() =>{
       this.splashScreen.hide();
@@ -68,15 +70,30 @@ export class MyApp {
       data => this.datos = data,
       err => console.log(err)
     );
-  }
-
+  }*/
+  ngOnInit() {
+    this.service.getDatos().subscribe(
+      (res: any) => this.datos = res,
+      (err: any) => console.error('Ha ocurrido un error al tratar de obtener los proyectos.')
+    );
+}
+/*
   private cargarAlmacenamientoInterno(datos: any[]){
-    interface dat{
-      idservicio: number,
-      nombreservicio: string,
-      iconoservicio: number,
-      nombrevaloracion: string
-    }
+    //var dat: any;
+    var sqlita: Sqlite;
+    sqlita=this.sqliteInterna;
+      datos.forEach(function(currentValue, index, arr){
+        var dat: any = 
+        {
+          idservicio: datos[index].idservicios,
+          nombreservicio: datos[index].nombreservicios,
+          iconoservicio: datos[index].iconoservicios,
+          nombrevaloracion: datos[index].nombrevaloracion
+        }  
+        console.log(dat.nombreservicio);  
+        sqlita.agregar(dat);
+      })
+    }    
     //for(var i = 0; i < 5; i++){
       var dat: dat = 
         {
@@ -86,9 +103,9 @@ export class MyApp {
           nombrevaloracion: 'sdfsdf'
         }
         
-      this.sqlite.create(dat); 
+       */
     //}
-  }*/
+  //}
 
   openPage(page) {
     // Reset the content nav to have just this page

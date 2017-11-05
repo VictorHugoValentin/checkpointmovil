@@ -94,6 +94,14 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "id": "uk.co.workingedge.cordova.plugin.sqliteporter.sqlitePorter",
+        "file": "plugins/uk.co.workingedge.cordova.plugin.sqliteporter/www/sqlitePorter.js",
+        "pluginId": "uk.co.workingedge.cordova.plugin.sqliteporter",
+        "clobbers": [
+            "cordova.plugins.sqlitePorter"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -108,7 +116,8 @@ module.exports.metadata =
     "cordova-sqlite-storage": "2.0.4",
     "ionic-plugin-keyboard": "2.2.1",
     "phonegap-plugin-barcodescanner": "6.0.8",
-    "cordova-plugin-camera": "2.4.1"
+    "cordova-plugin-camera": "2.4.1",
+    "uk.co.workingedge.cordova.plugin.sqliteporter": "1.0.2"
 };
 // BOTTOM OF METADATA
 });

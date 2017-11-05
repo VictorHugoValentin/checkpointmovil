@@ -12,12 +12,18 @@ import { ServiciosPage } from '../pages/servicios/servicios';
 import { ValoracionesPage } from '../pages/valoraciones/valoraciones';
 import { AcercaPage } from '../pages/acerca/acerca';
 import { ServiceProvider } from '../providers/service/service';
-import { HttpModule } from '@angular/http';
-import { Sqlite } from '../providers/sqlite/sqlite';
-import { SQLite } from '@ionic-native/sqlite';
+
 import { Camera } from '@ionic-native/camera';
 import {OpcionalesPage} from '../pages/opcionales/opcionales';
 
+
+import { IonicStorageModule } from '@ionic/storage';
+import { HttpModule } from '@angular/http';
+ 
+import { DatabaseProvider } from '../providers/database/database';
+ 
+import { SQLitePorter } from '@ionic-native/sqlite-porter';
+import { SQLite } from '@ionic-native/sqlite';
 @NgModule({
   declarations: [
     MyApp,
@@ -31,6 +37,7 @@ import {OpcionalesPage} from '../pages/opcionales/opcionales';
   imports: [
     BrowserModule,
     HttpModule,
+    IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
@@ -48,7 +55,8 @@ import {OpcionalesPage} from '../pages/opcionales/opcionales';
     SplashScreen,
     BarcodeScanner,
     ServiceProvider,
-    Sqlite,
+    DatabaseProvider,
+    SQLitePorter,
     SQLite,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},

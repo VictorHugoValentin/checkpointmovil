@@ -3,7 +3,7 @@ import { NavController} from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
 import { BarcodeScanner ,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
 import {ServiciosPage} from '../servicios/servicios';
-import {OpcionalesPage} from '../opcionales/opcionales';
+//import {OpcionalesPage} from '../opcionales/opcionales';
 
 import { ServiceProvider } from '../../providers/service/service';
 
@@ -39,14 +39,14 @@ scan(){
         console.log("Error occured : " + err);
     });         
 }
-/*
+
 servicios(){
        this.navCtrl.push(ServiciosPage);
 }
-*/
+/*
 servicios(){
     this.navCtrl.push(OpcionalesPage);
-}
+}*/
 
 encodeText(){
     this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE,this.encodeData).then((encodedData) => {
