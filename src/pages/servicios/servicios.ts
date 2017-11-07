@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ValoracionesPage} from '../valoraciones/valoraciones';
-import { ServiceProvider } from '../../providers/service/service';
+//import { DatabaseMySqlProvider } from '../../providers/database-my-sql/database-my-sql';
 import { DatabaseProvider } from './../../providers/database/database';
 
 @IonicPage()
@@ -14,7 +14,7 @@ export class ServiciosPage {
   //icono = {}; 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              public service: ServiceProvider,
+              //public databaseMySqlProvider: DatabaseMySqlProvider,
               public databaseProvider: DatabaseProvider) {
                 this.databaseProvider.getDatabaseState().subscribe(rdy => {
                   if (rdy) {

@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sun Nov 05 00:55:44 ART 2017
+#Sun Nov 05 02:47:22 ART 2017
 210.set=ASSET
 14.set=ASSET
 180.file=C\:\\Users\\mailo\\Desktop\\Appcheck\\lectoQR2\\platforms\\android\\build\\intermediates\\assets\\debug\\html-pt\\license.html

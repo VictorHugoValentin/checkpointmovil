@@ -5,9 +5,6 @@ import { BarcodeScanner ,BarcodeScannerOptions } from '@ionic-native/barcode-sca
 import {ServiciosPage} from '../servicios/servicios';
 //import {OpcionalesPage} from '../opcionales/opcionales';
 
-import { ServiceProvider } from '../../providers/service/service';
-
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html',
@@ -23,8 +20,7 @@ options :BarcodeScannerOptions;
 
 constructor(public navCtrl: NavController, 
             public navParams: NavParams,
-            private barcodeScanner: BarcodeScanner, 
-            public service: ServiceProvider) { }
+            private barcodeScanner: BarcodeScanner) { }
     
 
 scan(){

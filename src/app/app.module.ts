@@ -11,7 +11,6 @@ import { MisvaloracionesPage } from '../pages/misvaloraciones/misvaloraciones';
 import { ServiciosPage } from '../pages/servicios/servicios';
 import { ValoracionesPage } from '../pages/valoraciones/valoraciones';
 import { AcercaPage } from '../pages/acerca/acerca';
-import { ServiceProvider } from '../providers/service/service';
 
 import { Camera } from '@ionic-native/camera';
 import {OpcionalesPage} from '../pages/opcionales/opcionales';
@@ -24,6 +23,7 @@ import { DatabaseProvider } from '../providers/database/database';
  
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite } from '@ionic-native/sqlite';
+import { DatabaseMySqlProvider } from '../providers/database-my-sql/database-my-sql';
 @NgModule({
   declarations: [
     MyApp,
@@ -54,13 +54,12 @@ import { SQLite } from '@ionic-native/sqlite';
     StatusBar,
     SplashScreen,
     BarcodeScanner,
-    ServiceProvider,
     DatabaseProvider,
     SQLitePorter,
     SQLite,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    
+    DatabaseMySqlProvider,
   ]
  
 })

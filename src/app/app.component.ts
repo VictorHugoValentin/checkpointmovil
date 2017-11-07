@@ -8,8 +8,8 @@ import { MisvaloracionesPage } from '../pages/misvaloraciones/misvaloraciones';
 import { AcercaPage } from '../pages/acerca/acerca';
 import { DatabaseProvider } from '../providers/database/database';
 import { SQLite } from '@ionic-native/sqlite';
-import { ServiceProvider } from '../providers/service/service';
-//import { OnInit } from '@angular/core';
+import { DatabaseMySqlProvider } from '../providers/database-my-sql/database-my-sql';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -20,13 +20,19 @@ export class MyApp {
   rootPage:any = HomePage;
   
   pages: Array<{title: string, component: any}>;
-  datos: any[];
+
+  servicios: any[];
+  valoraciones: any[];
+  ubicaciones: any[];
+  ubicacionesValoraciones: any[];
+  logs: any[];
+
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen,
               public databaseProvider: DatabaseProvider,
               public SQLite: SQLite,
-              public service: ServiceProvider) {
+              public databaseMySqlProvider: DatabaseMySqlProvider) {
   this.initializeApp();
 	this.pages = [
       { title: 'Inicio', component: HomePage },
@@ -40,72 +46,59 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      //this.createDatabase();
-      //this.ngOnInit();
-      //this.obtenerDatosExternos();
-     //this.cargarAlmacenamientoInterno(this.datos);
-    });
-  }
-  
-  /*private createDatabase(){
-    this.SQLite.create({
-      name: 'data.db',
-      location: 'default' // the location field is required
-    })
-    .then((db) => {
-      this.sqliteInterna.setDatabase(db);
-      return this.sqliteInterna.createTable();
-    })
-    .then(() =>{
-      this.splashScreen.hide();
-      this.rootPage = 'HomePage';
-    })
-    .catch(error =>{
-      console.error(error);
+      this.getServiciosMysql();
+      this.getValoracionesMysql();
+      this.getUbicacionesMysql();
+      this.getUbicacionesValoracionesMysql();
+      this.getLogsMysql();
+      this.createDatabaseSQLite(this.servicios, this.valoraciones, 
+                                this.ubicaciones, this.ubicacionesValoraciones,
+                                this.logs);
     });
   }
 
-  private obtenerDatosExternos(){
-    this.service.getDatos().subscribe(
-      data => this.datos = data,
-      err => console.log(err)
+  createDatabaseSQLite(servicios, valoraciones, ubicaciones, ubicacionesValoraciones, logs){
+    this.databaseProvider.setServicios(servicios);
+    this.databaseProvider.setValoraciones(valoraciones);
+    this.databaseProvider.setUbicaciones(ubicaciones);
+    this.databaseProvider.setUbicacionValoracion(ubicacionesValoraciones);
+    this.databaseProvider.setLog(logs);
+  }
+  
+  getServiciosMysql() {
+    this.databaseMySqlProvider.getServicios().subscribe(
+      (res: any) => this.servicios = res,
+      (err: any) => console.error('Error al obtener servicios')
     );
-  }*/
-  ngOnInit() {
-    this.service.getDatos().subscribe(
-      (res: any) => this.datos = res,
-      (err: any) => console.error('Ha ocurrido un error al tratar de obtener los proyectos.')
+  }
+
+  getValoracionesMysql() {
+    this.databaseMySqlProvider.getValoraciones().subscribe(
+      (res: any) => this.valoraciones = res,
+      (err: any) => console.error('Error al obtener valoraciones')
     );
-}
-/*
-  private cargarAlmacenamientoInterno(datos: any[]){
-    //var dat: any;
-    var sqlita: Sqlite;
-    sqlita=this.sqliteInterna;
-      datos.forEach(function(currentValue, index, arr){
-        var dat: any = 
-        {
-          idservicio: datos[index].idservicios,
-          nombreservicio: datos[index].nombreservicios,
-          iconoservicio: datos[index].iconoservicios,
-          nombrevaloracion: datos[index].nombrevaloracion
-        }  
-        console.log(dat.nombreservicio);  
-        sqlita.agregar(dat);
-      })
-    }    
-    //for(var i = 0; i < 5; i++){
-      var dat: dat = 
-        {
-          idservicio: 1,
-          nombreservicio: 'limpieza',
-          iconoservicio: 3,
-          nombrevaloracion: 'sdfsdf'
-        }
-        
-       */
-    //}
-  //}
+  }
+
+  getUbicacionesMysql() {
+    this.databaseMySqlProvider.getUbicaciones().subscribe(
+      (res: any) => this.ubicaciones = res,
+      (err: any) => console.error('Error al obtener ubicaciones')
+    );
+  }
+
+  getUbicacionesValoracionesMysql() {
+    this.databaseMySqlProvider.getUbicacionesValoraciones().subscribe(
+      (res: any) => this.ubicacionesValoraciones = res,
+      (err: any) => console.error('Error al obtener ubicacionesValoraciones')
+    );
+  }
+
+  getLogsMysql() {
+    this.databaseMySqlProvider.getLogs().subscribe(
+      (res: any) => this.logs = res,
+      (err: any) => console.error('Error al obtener logs')
+    );
+  }
 
   openPage(page) {
     // Reset the content nav to have just this page

@@ -1,6 +1,6 @@
 webpackJsonp([6],{
 
-/***/ 133:
+/***/ 132:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -52,16 +52,15 @@ ValoracionesPage = __decorate([
 
 /***/ }),
 
-/***/ 134:
+/***/ 133:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServiciosPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__valoraciones_valoraciones__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_service_service__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_database_database__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__valoraciones_valoraciones__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_database_database__ = __webpack_require__(68);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -74,15 +73,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
+//import { DatabaseMySqlProvider } from '../../providers/database-my-sql/database-my-sql';
 
 var ServiciosPage = (function () {
     //icono = {}; 
-    function ServiciosPage(navCtrl, navParams, service, databaseProvider) {
+    function ServiciosPage(navCtrl, navParams, 
+        //public databaseMySqlProvider: DatabaseMySqlProvider,
+        databaseProvider) {
         var _this = this;
         this.navCtrl = navCtrl;
         this.navParams = navParams;
-        this.service = service;
         this.databaseProvider = databaseProvider;
         this.iconos = [];
         this.databaseProvider.getDatabaseState().subscribe(function (rdy) {
@@ -120,15 +120,14 @@ ServiciosPage = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_3__providers_service_service__["a" /* ServiceProvider */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_database_database__["a" /* DatabaseProvider */]])
+        __WEBPACK_IMPORTED_MODULE_3__providers_database_database__["a" /* DatabaseProvider */]])
 ], ServiciosPage);
 
 //# sourceMappingURL=servicios.js.map
 
 /***/ }),
 
-/***/ 135:
+/***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -174,7 +173,7 @@ AcercaPage = __decorate([
 
 /***/ }),
 
-/***/ 146:
+/***/ 145:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -187,11 +186,11 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 146;
+webpackEmptyAsyncContext.id = 145;
 
 /***/ }),
 
-/***/ 189:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
@@ -231,21 +230,20 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 189;
+webpackAsyncContext.id = 188;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 260:
+/***/ 259:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(259);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__servicios_servicios__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_service_service__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__servicios_servicios__ = __webpack_require__(133);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -261,13 +259,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 //import {OpcionalesPage} from '../opcionales/opcionales';
-
 var HomePage = (function () {
-    function HomePage(navCtrl, navParams, barcodeScanner, service) {
+    function HomePage(navCtrl, navParams, barcodeScanner) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.barcodeScanner = barcodeScanner;
-        this.service = service;
     }
     HomePage.prototype.scan = function () {
         var _this = this;
@@ -306,15 +302,14 @@ HomePage = __decorate([
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
-        __WEBPACK_IMPORTED_MODULE_4__providers_service_service__["a" /* ServiceProvider */]])
+        __WEBPACK_IMPORTED_MODULE_2__ionic_native_barcode_scanner__["a" /* BarcodeScanner */]])
 ], HomePage);
 
 //# sourceMappingURL=home.js.map
 
 /***/ }),
 
-/***/ 261:
+/***/ 260:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -369,6 +364,71 @@ var MisvaloracionesPage_1;
 
 /***/ }),
 
+/***/ 261:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabaseMySqlProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(103);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/*
+  Generated class for the DatabaseMySqlProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
+*/
+var DatabaseMySqlProvider = (function () {
+    function DatabaseMySqlProvider(http) {
+        this.http = http;
+        this.api = 'http://192.168.0.136/checkpointA/';
+    }
+    DatabaseMySqlProvider.prototype.getServicios = function () {
+        return this.http.get(this.api + 'listarServicios.php').map(function (res) { return res.json(); });
+    };
+    DatabaseMySqlProvider.prototype.getValoraciones = function () {
+        return this.http.get(this.api + 'listarValoraciones.php').map(function (res) { return res.json(); });
+    };
+    DatabaseMySqlProvider.prototype.getUbicaciones = function () {
+        return this.http.get(this.api + 'listarUbicaciones.php').map(function (res) { return res.json(); });
+    };
+    DatabaseMySqlProvider.prototype.getUbicacionesValoraciones = function () {
+        return this.http.get(this.api + 'listarUbicacionesValoraciones.php').map(function (res) { return res.json(); });
+    };
+    DatabaseMySqlProvider.prototype.getLogs = function () {
+        return this.http.get(this.api + 'listarLogs.php').map(function (res) { return res.json(); });
+    };
+    DatabaseMySqlProvider.prototype.insertarValoracion = function (parans) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        return this.http.post(this.api + 'insertval.php', parans, {
+            headers: headers,
+            method: "POST"
+        }).map(function (res) { return res.json(); });
+    };
+    return DatabaseMySqlProvider;
+}());
+DatabaseMySqlProvider = __decorate([
+    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
+], DatabaseMySqlProvider);
+
+//# sourceMappingURL=database-my-sql.js.map
+
+/***/ }),
+
 /***/ 262:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -376,7 +436,7 @@ var MisvaloracionesPage_1;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return OpcionalesPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(217);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(216);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -458,23 +518,23 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_barcode_scanner__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_barcode_scanner__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(579);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_misvaloraciones_misvaloraciones__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_servicios_servicios__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_valoraciones_valoraciones__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_acerca_acerca__ = __webpack_require__(135);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__providers_service_service__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__ionic_native_camera__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_opcionales_opcionales__ = __webpack_require__(262);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__ionic_storage__ = __webpack_require__(216);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_http__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__providers_database_database__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_sqlite_porter__ = __webpack_require__(193);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_sqlite__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_misvaloraciones_misvaloraciones__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__pages_servicios_servicios__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__pages_valoraciones_valoraciones__ = __webpack_require__(132);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_acerca_acerca__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_opcionales_opcionales__ = __webpack_require__(262);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__ionic_storage__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_http__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__providers_database_database__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__ionic_native_sqlite_porter__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_sqlite__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__providers_database_my_sql_database_my_sql__ = __webpack_require__(261);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -514,13 +574,13 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__pages_misvaloraciones_misvaloraciones__["a" /* MisvaloracionesPage */],
             __WEBPACK_IMPORTED_MODULE_10__pages_valoraciones_valoraciones__["a" /* ValoracionesPage */],
             __WEBPACK_IMPORTED_MODULE_9__pages_servicios_servicios__["a" /* ServiciosPage */],
-            __WEBPACK_IMPORTED_MODULE_14__pages_opcionales_opcionales__["a" /* OpcionalesPage */],
+            __WEBPACK_IMPORTED_MODULE_13__pages_opcionales_opcionales__["a" /* OpcionalesPage */],
             __WEBPACK_IMPORTED_MODULE_11__pages_acerca_acerca__["a" /* AcercaPage */]
         ],
         imports: [
             __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
-            __WEBPACK_IMPORTED_MODULE_16__angular_http__["c" /* HttpModule */],
-            __WEBPACK_IMPORTED_MODULE_15__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
+            __WEBPACK_IMPORTED_MODULE_15__angular_http__["c" /* HttpModule */],
+            __WEBPACK_IMPORTED_MODULE_14__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
             __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["c" /* IonicModule */].forRoot(__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* MyApp */], {}, {
                 links: [
                     { loadChildren: '../pages/valoraciones/valoraciones.module#ValoracionesPageModule', name: 'ValoracionesPage', segment: 'valoraciones', priority: 'low', defaultHistory: [] },
@@ -539,19 +599,19 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_8__pages_misvaloraciones_misvaloraciones__["a" /* MisvaloracionesPage */],
             __WEBPACK_IMPORTED_MODULE_9__pages_servicios_servicios__["a" /* ServiciosPage */],
             __WEBPACK_IMPORTED_MODULE_10__pages_valoraciones_valoraciones__["a" /* ValoracionesPage */],
-            __WEBPACK_IMPORTED_MODULE_14__pages_opcionales_opcionales__["a" /* OpcionalesPage */],
+            __WEBPACK_IMPORTED_MODULE_13__pages_opcionales_opcionales__["a" /* OpcionalesPage */],
             __WEBPACK_IMPORTED_MODULE_11__pages_acerca_acerca__["a" /* AcercaPage */]
         ],
         providers: [
             __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__["a" /* StatusBar */],
             __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
             __WEBPACK_IMPORTED_MODULE_5__ionic_native_barcode_scanner__["a" /* BarcodeScanner */],
-            __WEBPACK_IMPORTED_MODULE_12__providers_service_service__["a" /* ServiceProvider */],
-            __WEBPACK_IMPORTED_MODULE_17__providers_database_database__["a" /* DatabaseProvider */],
-            __WEBPACK_IMPORTED_MODULE_18__ionic_native_sqlite_porter__["a" /* SQLitePorter */],
-            __WEBPACK_IMPORTED_MODULE_19__ionic_native_sqlite__["a" /* SQLite */],
-            __WEBPACK_IMPORTED_MODULE_13__ionic_native_camera__["a" /* Camera */],
+            __WEBPACK_IMPORTED_MODULE_16__providers_database_database__["a" /* DatabaseProvider */],
+            __WEBPACK_IMPORTED_MODULE_17__ionic_native_sqlite_porter__["a" /* SQLitePorter */],
+            __WEBPACK_IMPORTED_MODULE_18__ionic_native_sqlite__["a" /* SQLite */],
+            __WEBPACK_IMPORTED_MODULE_12__ionic_native_camera__["a" /* Camera */],
             { provide: __WEBPACK_IMPORTED_MODULE_1__angular_core__["v" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] },
+            __WEBPACK_IMPORTED_MODULE_19__providers_database_my_sql_database_my_sql__["a" /* DatabaseMySqlProvider */],
         ]
     })
 ], AppModule);
@@ -567,14 +627,14 @@ AppModule = __decorate([
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(257);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(260);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_misvaloraciones_misvaloraciones__ = __webpack_require__(261);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_acerca_acerca__ = __webpack_require__(135);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(257);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(256);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(259);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_misvaloraciones_misvaloraciones__ = __webpack_require__(260);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pages_acerca_acerca__ = __webpack_require__(134);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__providers_database_database__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_sqlite__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_service_service__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_sqlite__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__providers_database_my_sql_database_my_sql__ = __webpack_require__(261);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -594,15 +654,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-//import { OnInit } from '@angular/core';
 var MyApp = (function () {
-    function MyApp(platform, statusBar, splashScreen, databaseProvider, SQLite, service) {
+    function MyApp(platform, statusBar, splashScreen, databaseProvider, SQLite, databaseMySqlProvider) {
         this.platform = platform;
         this.statusBar = statusBar;
         this.splashScreen = splashScreen;
         this.databaseProvider = databaseProvider;
         this.SQLite = SQLite;
-        this.service = service;
+        this.databaseMySqlProvider = databaseMySqlProvider;
         this.rootPage = __WEBPACK_IMPORTED_MODULE_4__pages_home_home__["a" /* HomePage */];
         this.initializeApp();
         this.pages = [
@@ -618,69 +677,41 @@ var MyApp = (function () {
             // Here you can do any higher level native things you might need.
             _this.statusBar.styleDefault();
             _this.splashScreen.hide();
-            //this.createDatabase();
-            //this.ngOnInit();
-            //this.obtenerDatosExternos();
-            //this.cargarAlmacenamientoInterno(this.datos);
+            _this.getServiciosMysql();
+            _this.getValoracionesMysql();
+            _this.getUbicacionesMysql();
+            _this.getUbicacionesValoracionesMysql();
+            _this.getLogsMysql();
+            _this.createDatabaseSQLite(_this.servicios, _this.valoraciones, _this.ubicaciones, _this.ubicacionesValoraciones, _this.logs);
         });
     };
-    /*private createDatabase(){
-      this.SQLite.create({
-        name: 'data.db',
-        location: 'default' // the location field is required
-      })
-      .then((db) => {
-        this.sqliteInterna.setDatabase(db);
-        return this.sqliteInterna.createTable();
-      })
-      .then(() =>{
-        this.splashScreen.hide();
-        this.rootPage = 'HomePage';
-      })
-      .catch(error =>{
-        console.error(error);
-      });
-    }
-  
-    private obtenerDatosExternos(){
-      this.service.getDatos().subscribe(
-        data => this.datos = data,
-        err => console.log(err)
-      );
-    }*/
-    MyApp.prototype.ngOnInit = function () {
-        var _this = this;
-        this.service.getDatos().subscribe(function (res) { return _this.datos = res; }, function (err) { return console.error('Ha ocurrido un error al tratar de obtener los proyectos.'); });
+    MyApp.prototype.createDatabaseSQLite = function (servicios, valoraciones, ubicaciones, ubicacionesValoraciones, logs) {
+        this.databaseProvider.setServicios(servicios);
+        this.databaseProvider.setValoraciones(valoraciones);
+        this.databaseProvider.setUbicaciones(ubicaciones);
+        this.databaseProvider.setUbicacionValoracion(ubicacionesValoraciones);
+        this.databaseProvider.setLog(logs);
     };
-    /*
-      private cargarAlmacenamientoInterno(datos: any[]){
-        //var dat: any;
-        var sqlita: Sqlite;
-        sqlita=this.sqliteInterna;
-          datos.forEach(function(currentValue, index, arr){
-            var dat: any =
-            {
-              idservicio: datos[index].idservicios,
-              nombreservicio: datos[index].nombreservicios,
-              iconoservicio: datos[index].iconoservicios,
-              nombrevaloracion: datos[index].nombrevaloracion
-            }
-            console.log(dat.nombreservicio);
-            sqlita.agregar(dat);
-          })
-        }
-        //for(var i = 0; i < 5; i++){
-          var dat: dat =
-            {
-              idservicio: 1,
-              nombreservicio: 'limpieza',
-              iconoservicio: 3,
-              nombrevaloracion: 'sdfsdf'
-            }
-            
-           */
-    //}
-    //}
+    MyApp.prototype.getServiciosMysql = function () {
+        var _this = this;
+        this.databaseMySqlProvider.getServicios().subscribe(function (res) { return _this.servicios = res; }, function (err) { return console.error('Error al obtener servicios'); });
+    };
+    MyApp.prototype.getValoracionesMysql = function () {
+        var _this = this;
+        this.databaseMySqlProvider.getValoraciones().subscribe(function (res) { return _this.valoraciones = res; }, function (err) { return console.error('Error al obtener valoraciones'); });
+    };
+    MyApp.prototype.getUbicacionesMysql = function () {
+        var _this = this;
+        this.databaseMySqlProvider.getUbicaciones().subscribe(function (res) { return _this.ubicaciones = res; }, function (err) { return console.error('Error al obtener ubicaciones'); });
+    };
+    MyApp.prototype.getUbicacionesValoracionesMysql = function () {
+        var _this = this;
+        this.databaseMySqlProvider.getUbicacionesValoraciones().subscribe(function (res) { return _this.ubicacionesValoraciones = res; }, function (err) { return console.error('Error al obtener ubicacionesValoraciones'); });
+    };
+    MyApp.prototype.getLogsMysql = function () {
+        var _this = this;
+        this.databaseMySqlProvider.getLogs().subscribe(function (res) { return _this.logs = res; }, function (err) { return console.error('Error al obtener logs'); });
+    };
     MyApp.prototype.openPage = function (page) {
         // Reset the content nav to have just this page
         // we wouldn't want the back button to show in this scenario
@@ -700,7 +731,7 @@ MyApp = __decorate([
         __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */],
         __WEBPACK_IMPORTED_MODULE_7__providers_database_database__["a" /* DatabaseProvider */],
         __WEBPACK_IMPORTED_MODULE_8__ionic_native_sqlite__["a" /* SQLite */],
-        __WEBPACK_IMPORTED_MODULE_9__providers_service_service__["a" /* ServiceProvider */]])
+        __WEBPACK_IMPORTED_MODULE_9__providers_database_my_sql_database_my_sql__["a" /* DatabaseMySqlProvider */]])
 ], MyApp);
 
 //# sourceMappingURL=app.component.js.map
@@ -713,15 +744,15 @@ MyApp = __decorate([
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DatabaseProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(102);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_sqlite__ = __webpack_require__(105);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_sqlite_porter__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_sqlite__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_sqlite_porter__ = __webpack_require__(192);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Rx__ = __webpack_require__(294);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Rx___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_Rx__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(215);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -779,9 +810,88 @@ var DatabaseProvider = (function () {
                 .catch(function (e) { return console.error(e); });
         });
     };
-    DatabaseProvider.prototype.addDeveloper = function (name, skill, years) {
-        var data = [name, skill, years];
-        return this.database.executeSql("INSERT INTO developer (name, skill, yearsOfExperience) VALUES (?, ?, ?)", data).then(function (data) {
+    DatabaseProvider.prototype.setServicios = function (servicios) {
+        var data;
+        var se = JSON.parse(servicios);
+        var largo = Object.keys(se).length;
+        for (var i = 0; i < largo; i++) {
+            var servicio = [se[i].idservicio,
+                se[i].nombreservicio,
+                se[i].iconoservicio];
+            data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio,"
+                + " iconoservicio)"
+                + " VALUES (?, ?, ?)", servicio);
+        }
+        data.then(function (data) {
+            return data;
+        }, function (err) {
+            console.log('Error: ', err);
+            return err;
+        });
+    };
+    DatabaseProvider.prototype.setValoraciones = function (valoraciones) {
+        var data;
+        var va = JSON.parse(valoraciones);
+        var largo = Object.keys(va).length;
+        for (var i = 0; i < largo; i++) {
+            var valoracion = [va[i].idvaloracion,
+                va[i].nombrevaloracion,
+                va[i].descripcion,
+                va[i].foto,
+                va[i].email,
+                va[i].servicio];
+            data = this.database.executeSql("INSERT INTO valoraciones (idvaloracion, nombrevaloracion,"
+                + " descripcion, foto, email, servicio)"
+                + " VALUES (?, ?, ?, ?, ?, ?)", valoracion);
+        }
+        data.then(function (data) {
+            return data;
+        }, function (err) {
+            console.log('Error: ', err);
+            return err;
+        });
+    };
+    DatabaseProvider.prototype.setUbicaciones = function (ubicaciones) {
+        var data;
+        var ub = JSON.parse(ubicaciones);
+        var largo = Object.keys(ub).length;
+        for (var i = 0; i < largo; i++) {
+            var ubicacion = [ub[i].idubicacion,
+                ub[i].codigoqr,
+                ub[i].nombreubicacion,
+                ub[i].ubicacion];
+            data = this.database.executeSql("INSERT INTO ubicaciones (idubicacion, codigoqr,"
+                + " nombreubicacion, ubicacion)"
+                + " VALUES (?, ?, ?, ?)", ubicacion);
+        }
+        data.then(function (data) {
+            return data;
+        }, function (err) {
+            console.log('Error: ', err);
+            return err;
+        });
+    };
+    DatabaseProvider.prototype.setUbicacionValoracion = function (ubicacionesValoraciones) {
+        var data;
+        var ubva = JSON.parse(ubicacionesValoraciones);
+        var largo = Object.keys(ubva).length;
+        for (var i = 0; i < largo; i++) {
+            var ubicacionValoracion = [ubva[i].idubicacion_valoracion,
+                ubva[i].ubicacion,
+                ubva[i].valoracion];
+            data = this.database.executeSql("INSERT INTO ubicacion_valoracion (idubicacion_valoracion, "
+                + "ubicacion, valoracion)"
+                + " VALUES (?, ?, ?)", ubicacionValoracion);
+        }
+        data.then(function (data) {
+            return data;
+        }, function (err) {
+            console.log('Error: ', err);
+            return err;
+        });
+    };
+    DatabaseProvider.prototype.setLog = function (log) {
+        return this.database.executeSql("INSERT INTO log (idlog) VALUES (?)", log.idlog).then(function (data) {
             return data;
         }, function (err) {
             console.log('Error: ', err);
@@ -838,59 +948,6 @@ DatabaseProvider = __decorate([
 ], DatabaseProvider);
 
 //# sourceMappingURL=database.js.map
-
-/***/ }),
-
-/***/ 74:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ServiceProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(103);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/*
-  Generated class for the ServiceProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
-var ServiceProvider = (function () {
-    function ServiceProvider(http) {
-        this.http = http;
-        this.api = 'http://192.168.0.136/checkpointA/';
-    }
-    ServiceProvider.prototype.getDatos = function () {
-        return this.http.get(this.api + 'listserv.php').map(function (res) { return res.json(); });
-    };
-    ServiceProvider.prototype.insertarValoracion = function (parans) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded' });
-        return this.http.post(this.api + 'insertval.php', parans, {
-            headers: headers,
-            method: "POST"
-        }).map(function (res) { return res.json(); });
-    };
-    return ServiceProvider;
-}());
-ServiceProvider = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Injectable */])(),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]])
-], ServiceProvider);
-
-//# sourceMappingURL=service.js.map
 
 /***/ })
 
