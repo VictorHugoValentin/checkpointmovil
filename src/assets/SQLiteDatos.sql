@@ -25,4 +25,3 @@ CREATE TABLE IF NOT EXISTS ubicacion_valoracion(idubicacion_valoracion INTEGER P
                                                 REFERENCES valoraciones(idvaloracion));  
 CREATE TABLE IF NOT EXISTS log(idlog INTEGER PRIMARY KEY);
 
-

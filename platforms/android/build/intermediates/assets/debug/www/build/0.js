@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 585:
+/***/ 584:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29,7 +29,7 @@ UbManualPageModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_2__ub_manual__["a" /* UbManualPage */],
         ],
         imports: [
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__ub_manual__["a" /* UbManualPage */]),
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__ub_manual__["a" /* UbManualPage */]),
         ],
     })
 ], UbManualPageModule);
@@ -73,11 +73,10 @@ var UbManualPage = (function () {
     return UbManualPage;
 }());
 UbManualPage = __decorate([
-    Object(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPage */])(),
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-ub-manual',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\ub-manual\ub-manual.html"*/'<!--\n  Generated template for the UbManualPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n        <ion-navbar color="verde">\n                <ion-title >\n                        <img src="assets/img/logo.png" width="30" height="40" />\n                    </ion-title>\n                    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n        </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-footer >\n        <ion-toolbar color="amarillo" >\n            <ion-title>Ubicación</ion-title>\n        </ion-toolbar>\n      </ion-footer>\n</ion-content>\n'/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\ub-manual\ub-manual.html"*/,
+        selector: 'page-ub-manual',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\ub-manual\ub-manual.html"*/`<!--\n  Generated template for the UbManualPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n        <ion-navbar color="verde">\n                <ion-title >\n                        <img src="assets/img/logo.png" width="30" height="40" />\n                    </ion-title>\n                    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n        </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-footer >\n        <ion-toolbar color="amarillo" >\n            <ion-title>Ubicación</ion-title>\n        </ion-toolbar>\n      </ion-footer>\n</ion-content>\n`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\ub-manual\ub-manual.html"*/,
     }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]])
+    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */]])
 ], UbManualPage);
 
 //# sourceMappingURL=ub-manual.js.map

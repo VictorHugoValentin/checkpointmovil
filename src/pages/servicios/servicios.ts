@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {ValoracionesPage} from '../valoraciones/valoraciones';
-//import { DatabaseMySqlProvider } from '../../providers/database-my-sql/database-my-sql';
 import { DatabaseProvider } from './../../providers/database/database';
 
 @IonicPage()
@@ -10,17 +9,16 @@ import { DatabaseProvider } from './../../providers/database/database';
   templateUrl: 'servicios.html',
 })
 export class ServiciosPage {
-  iconos = [];
+  iconos : Array<any>;
   //icono = {}; 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
-              //public databaseMySqlProvider: DatabaseMySqlProvider,
               public databaseProvider: DatabaseProvider) {
-                this.databaseProvider.getDatabaseState().subscribe(rdy => {
+              this.databaseProvider.getDatabaseState().subscribe(rdy => {
                   if (rdy) {
                     this.cargarIconos();
-                  }
-                })
+                }
+              })
   }
   
   
@@ -28,18 +26,13 @@ export class ServiciosPage {
     console.log('ionViewDidLoad ServiciosPage');
   }
   cargarIconos(){
-    this.databaseProvider.getServicios().then(data =>{
-      this.iconos = data;
-    });
+    this.databaseProvider.getServicios()
+    .then(data =>
+      this.iconos = JSON.parse(data)
+    );
   }
   
-  /*cargarIconosServicios(){
-      this.service.getDatos().subscribe(
-        data => this.iconos = data,
-        err => console.log(err)
-      );
-}*/
-  valoraciones(servicio){
+  valoraciones(servicio: number){
     this.navCtrl.push(ValoracionesPage, {
       servicio: servicio
     });

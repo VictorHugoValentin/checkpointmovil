@@ -21,11 +21,12 @@ export class MyApp {
   
   pages: Array<{title: string, component: any}>;
 
-  servicios: any[];
-  valoraciones: any[];
-  ubicaciones: any[];
-  ubicacionesValoraciones: any[];
-  logs: any[];
+  //Declaracion arrays que guardan los datos de MySQL
+  servicios: Array<any>;
+  valoraciones: Array<any>;
+  ubicaciones: Array<any>;
+  ubicacionesValoraciones: Array<any>;
+  logs: number;
 
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
@@ -40,69 +41,81 @@ export class MyApp {
       { title: 'Acerca', component: AcercaPage },
     ];
   }
+
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.getServiciosMysql();
       this.getValoracionesMysql();
       this.getUbicacionesMysql();
       this.getUbicacionesValoracionesMysql();
-      this.getLogsMysql();
-      this.createDatabaseSQLite(this.servicios, this.valoraciones, 
-                                this.ubicaciones, this.ubicacionesValoraciones,
-                                this.logs);
+      this.getLogsMysql();  
     });
   }
-
-  createDatabaseSQLite(servicios, valoraciones, ubicaciones, ubicacionesValoraciones, logs){
-    this.databaseProvider.setServicios(servicios);
-    this.databaseProvider.setValoraciones(valoraciones);
-    this.databaseProvider.setUbicaciones(ubicaciones);
-    this.databaseProvider.setUbicacionValoracion(ubicacionesValoraciones);
-    this.databaseProvider.setLog(logs);
-  }
-  
+ 
+  //GET's datos MySQL
   getServiciosMysql() {
     this.databaseMySqlProvider.getServicios().subscribe(
-      (res: any) => this.servicios = res,
-      (err: any) => console.error('Error al obtener servicios')
+      data => {
+        this.servicios = data;
+        this.databaseProvider.setServicios(this.servicios);
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 
   getValoracionesMysql() {
     this.databaseMySqlProvider.getValoraciones().subscribe(
-      (res: any) => this.valoraciones = res,
-      (err: any) => console.error('Error al obtener valoraciones')
+      data => {
+        this.valoraciones = data;
+        this.databaseProvider.setValoraciones(this.valoraciones);
+      },
+      err => {
+        console.log(err);
+      }
     );
   }
 
   getUbicacionesMysql() {
     this.databaseMySqlProvider.getUbicaciones().subscribe(
-      (res: any) => this.ubicaciones = res,
-      (err: any) => console.error('Error al obtener ubicaciones')
+      data => {
+        this.ubicaciones = data;
+        this.databaseProvider.setUbicaciones(this.ubicaciones);
+      },
+      err => {
+        console.error(err);
+      }
     );
   }
 
   getUbicacionesValoracionesMysql() {
     this.databaseMySqlProvider.getUbicacionesValoraciones().subscribe(
-      (res: any) => this.ubicacionesValoraciones = res,
-      (err: any) => console.error('Error al obtener ubicacionesValoraciones')
+      data => {
+        this.ubicacionesValoraciones = data;
+        this.databaseProvider.setUbicacionValoracion(this.ubicacionesValoraciones);
+      },
+      err => {
+        console.error(err);
+      }
     );
   }
 
   getLogsMysql() {
     this.databaseMySqlProvider.getLogs().subscribe(
-      (res: any) => this.logs = res,
-      (err: any) => console.error('Error al obtener logs')
+      data => {
+        this.logs = data;
+        this.databaseProvider.setLog(this.logs);
+      },
+      err => {
+        console.error(err);
+      }
     );
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 }

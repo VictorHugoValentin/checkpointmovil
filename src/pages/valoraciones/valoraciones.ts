@@ -8,16 +8,18 @@ import { DatabaseProvider } from './../../providers/database/database';
   templateUrl: 'valoraciones.html',
 })
 export class ValoracionesPage {
-  valoraciones: any[];
+  valoraciones: Array<any>;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public databaseProvider: DatabaseProvider) {
     this.getValoraciones(this.navParams.get('servicio'));
   }
   
-  getValoraciones(servicio){
+  //CONTROLAR LOS CASOS EN LOS QUE EL SERVICIO NO TIENE VALORAICONES 
+  //(no tendria q estar habilitado desde WEB APP)
+  getValoraciones(servicio: number){
     this.databaseProvider.getValoraciones(servicio).then(data =>{
-    this.valoraciones = data;
+    this.valoraciones =  JSON.parse(data);
     });
   }
 

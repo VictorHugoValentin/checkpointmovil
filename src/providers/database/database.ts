@@ -6,6 +6,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { BehaviorSubject } from 'rxjs/Rx';
 import { Storage } from '@ionic/storage';
+import { DatabaseMySqlProvider } from '../../providers/database-my-sql/database-my-sql';
 
 
 @Injectable()
@@ -14,13 +15,21 @@ export class DatabaseProvider {
   database: SQLiteObject;
   private databaseReady: BehaviorSubject<boolean>;
 
-  constructor(public sqlitePorter: SQLitePorter, 
-              private storage: Storage, 
-              private sqlite: SQLite, 
-              private platform: Platform, 
-              private http: Http) {
+  servicios: Array<any>;
+  valoraciones: Array<any>;
+  ubicaciones: Array<any>;
+  ubicacionesValoraciones: Array<any>;
+  logs: Array<any>;
+
+  constructor(public sqlitePorter: SQLitePorter,
+              public databaseMySqlProvider: DatabaseMySqlProvider, 
+              public storage: Storage, 
+              public sqlite: SQLite, 
+              public platform: Platform, 
+              public http: Http) {
     this.databaseReady = new BehaviorSubject(false);
     this.platform.ready().then(() => {
+      this.sqlite=new SQLite();
       this.sqlite.create({
         name: 'SQLiteData.db',
         location: 'default'
@@ -51,135 +60,99 @@ export class DatabaseProvider {
       });
   }
  
-  setServicios(servicios) {
-    var data;
-    for(var i=0;i<servicios.length;i++){
-      /*let servicio = [servicios[i].idservicio, 
-                      servicios[i].nombreservicio, 
-                      servicios[i].iconoservicio]*/
-      data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio,"
-                                                            +" iconoservicio)"
-                                                            +" VALUES (?, ?, ?)", [servicios[i].idservicio, 
-                                                            servicios[i].nombreservicio, 
-                                                            servicios[i].iconoservicio])
+  setServicios(servicios: Array<any>) {
+    var data
+    for (var i = 0; i < servicios.length; i++){
+      data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio, iconoservicio)"
+                              +" VALUES (?, ?, ?)", [servicios[i].idservicio,
+                                                     servicios[i].nombreservicio,
+                                                     servicios[i].iconoservicio]);
     }
-    data.then(data => {
-      return data;
-    }, err => {
-      console.log('Error: ', err);
-      return err;
-    });
+    return data;
   }
 
-  setValoraciones(valoraciones) {
+  setValoraciones(valoraciones: Array<any>) {
     var data;
     for(var i=0;i<valoraciones.length;i++){
-      /*let valoracion = [valoraciones[i].idvaloracion, 
-                        valoraciones[i].nombrevaloracion, 
-                        valoraciones[i].descripcion, 
-                        valoraciones[i].foto,
-                        valoraciones[i].email,
-                        valoraciones[i].servicio]*/
       data = this.database.executeSql("INSERT INTO valoraciones (idvaloracion, nombrevaloracion,"
                                                            +" descripcion, foto, email, servicio)"
-                                                           +" VALUES (?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion, 
-                                                           valoraciones[i].nombrevaloracion, 
-                                                           valoraciones[i].descripcion, 
-                                                           valoraciones[i].foto,
-                                                           valoraciones[i].email,
-                                                           valoraciones[i].servicio])
+                                      +" VALUES (?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion, 
+                                                                      valoraciones[i].nombrevaloracion, 
+                                                                      valoraciones[i].descripcion, 
+                                                                      valoraciones[i].foto,
+                                                                      valoraciones[i].email,
+                                                                      valoraciones[i].servicio]);
     }
-    data.then(data => {
-      return data;
-    }, err => {
-      console.log('Error: ', err);
-      return err;
-    });
+    return data;
   }
 
-  setUbicaciones(ubicaciones) {
+  setUbicaciones(ubicaciones: Array<any>) {
     var data;
     for(var i=0;i<ubicaciones.length;i++){
-      /*let ubicacion = [ubicaciones[i].idubicacion, 
-                        ubicaciones[i].codigoqr, 
-                        ubicaciones[i].nombreubicacion, 
-                        ubicaciones[i].ubicacion]*/
       data = this.database.executeSql("INSERT INTO ubicaciones (idubicacion, codigoqr,"
                                                            +" nombreubicacion, ubicacion)"
-                                                           +" VALUES (?, ?, ?, ?)", [ubicaciones[i].idubicacion, 
-                                                           ubicaciones[i].codigoqr, 
-                                                           ubicaciones[i].nombreubicacion, 
-                                                           ubicaciones[i].ubicacion])
+                                     +" VALUES (?, ?, ?, ?)", [ubicaciones[i].idubicacion, 
+                                                               ubicaciones[i].codigoqr, 
+                                                               ubicaciones[i].nombreubicacion, 
+                                                               ubicaciones[i].ubicacion]);
     }
-    data.then(data => {
-      return data;
-    }, err => {
-      console.log('Error: ', err);
-      return err;
-    });
+    return data;
   }
 
-  setUbicacionValoracion(ubicacionesValoraciones) {
+  setUbicacionValoracion(ubicacionesValoraciones: Array<any>) {
     var data;
     for(var i=0;i<ubicacionesValoraciones.length;i++){
-      let ubicacionValoracion = [ubicacionesValoraciones[i].idubicacion_valoracion, 
-                                  ubicacionesValoraciones[i].ubicacion, 
-                                  ubicacionesValoraciones[i].valoracion]
-      data = this.database.executeSql("INSERT INTO ubicacion_valoracion (idubicacion_valoracion, "
+      data=this.database.executeSql("INSERT INTO ubicacion_valoracion (idubicacion_valoracion, "
                                                            +"ubicacion, valoracion)"
-                                                           +" VALUES (?, ?, ?)", ubicacionValoracion)
+                                   +" VALUES (?, ?, ?)", [ubicacionesValoraciones[i].idubicacion_valoracion, 
+                                                          ubicacionesValoraciones[i].ubicacion, 
+                                                          ubicacionesValoraciones[i].valoracion]);
     }
-    data.then(data => {
-      return data;
-    }, err => {
-      console.log('Error: ', err);
-      return err;
-    });
+    return data;
   }
 
-  setLog(log) {
-      return this.database.executeSql("INSERT INTO log (idlog) VALUES (?)", log.idlog).then(data => {
+  setLog(log: number) {
+      var data;
+      data = this.database.executeSql("INSERT INTO log (idlog) VALUES (?)", log);
       return data;
-    }, err => {
-      console.log('Error: ', err);
-      return err;
-    });
   }
 
   getServicios() {
-    return this.database.executeSql("SELECT * FROM servicios", []).then((data) => {
-      let datos = [];
+    return this.database.executeSql("SELECT * from servicios", [])
+    .then((data)=>{
+      let servicios: string;
       if (data.rows.length > 0) {
-        for (var i = 0; i < data.rows.length; i++) {
-          datos.push({ idservicio: data.rows.item(i).idservicio, 
-                       nombreservicio: data.rows.item(i).nombreservicio, 
-                       iconoservicio: data.rows.item(i).iconoservicio });
+        servicios = "[";
+        for(let i=0; i<data.rows.length; i++){
+          if(servicios.charAt(servicios.length-1)!="["){
+            servicios = servicios.concat(",");
+          }
+          servicios = servicios.concat('{"idservicio": "'+data.rows.item(i).idservicio+'",');
+          servicios = servicios.concat('"nombreservicio": "'+data.rows.item(i).nombreservicio+'",');
+          servicios = servicios.concat('"iconoservicio": "'+data.rows.item(i).iconoservicio+'"}'); 
         }
+        servicios = servicios.concat("]");
       }
-      return datos;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
+      return servicios;
     });
   }
  
-  getValoraciones(servicio){
+  getValoraciones(servicio: number){
     return this.database.executeSql("SELECT * FROM valoraciones v "
                                   +"JOIN servicios s ON v.servicio=s.idservicio "
                                   +"WHERE idservicio = "+ servicio, []).then((data) => {
-      let datos = [];
+      let valoraciones: string;
       if (data.rows.length > 0) {
+        valoraciones = "[";
         for (var i = 0; i < data.rows.length; i++) {
-          datos.push({ idservicio: data.rows.item(i).idservicio, 
-                       nombreservicio: data.rows.item(i).nombreservicio, 
-                       iconoservicio: data.rows.item(i).iconoservicio, 
-                       nombrevaloracion: data.rows.item(i).nombrevaloracion });
+          if(valoraciones.charAt(valoraciones.length-1)!="["){
+            valoraciones = valoraciones.concat(",");
+          }
+          valoraciones = valoraciones.concat('{"nombrevaloracion": "'+data.rows.item(i).nombrevaloracion+'"}'); 
         }
+        valoraciones = valoraciones.concat("]");
       }
-      return datos;
-    }, err => {
-      console.log('Error: ', err);
-      return [];
+      return valoraciones;
     });
   }
 
@@ -187,5 +160,4 @@ export class DatabaseProvider {
     return this.databaseReady.asObservable();
   }
  
-
 }
