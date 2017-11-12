@@ -24,6 +24,7 @@ import { DatabaseProvider } from '../providers/database/database';
 import { SQLitePorter } from '@ionic-native/sqlite-porter';
 import { SQLite } from '@ionic-native/sqlite';
 import { DatabaseMySqlProvider } from '../providers/database-my-sql/database-my-sql';
+    
 
 @NgModule({
   declarations: [

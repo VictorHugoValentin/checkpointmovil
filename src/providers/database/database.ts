@@ -148,10 +148,14 @@ export class DatabaseProvider {
           if(valoraciones.charAt(valoraciones.length-1)!="["){
             valoraciones = valoraciones.concat(",");
           }
-          valoraciones = valoraciones.concat('{"nombrevaloracion": "'+data.rows.item(i).nombrevaloracion+'"}'); 
+          valoraciones = valoraciones.concat('{"nombrevaloracion": "'+data.rows.item(i).nombrevaloracion+'",');
+          valoraciones = valoraciones.concat('"descripcion": "'+data.rows.item(i).descripcion+'",');
+          valoraciones = valoraciones.concat('"foto": "'+data.rows.item(i).foto+'",');
+          valoraciones = valoraciones.concat('"email": "'+data.rows.item(i).email+'"}');  
         }
         valoraciones = valoraciones.concat("]");
       }
+      console.log("JSON VALORACIONES: "+valoraciones);
       return valoraciones;
     });
   }

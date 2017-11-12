@@ -86,7 +86,7 @@ export class MyApp {
         this.databaseProvider.setUbicaciones(this.ubicaciones);
       },
       err => {
-        console.error(err);
+        console.log(err);
       }
     );
   }
@@ -98,7 +98,7 @@ export class MyApp {
         this.databaseProvider.setUbicacionValoracion(this.ubicacionesValoraciones);
       },
       err => {
-        console.error(err);
+        console.log(err);
       }
     );
   }
@@ -110,7 +110,7 @@ export class MyApp {
         this.databaseProvider.setLog(this.logs);
       },
       err => {
-        console.error(err);
+        console.log(err);
       }
     );
   }

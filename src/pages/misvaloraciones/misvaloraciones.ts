@@ -19,7 +19,7 @@ export class MisvaloracionesPage {
     this.icons = ['done-all', 'clock'];
 
     this.items = [];
-    for (let i = 1; i < 11; i++) {
+    for (let i = 1; i < 30; i++) {
       this.items.push({
         title: 'Valoración ' + i,
         note: 'Fecha ' + i,
