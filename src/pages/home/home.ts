@@ -1,57 +1,42 @@
 import { Component } from '@angular/core';
-import { NavController} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { NavParams } from 'ionic-angular';
-import { BarcodeScanner ,BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
-import {ServiciosPage} from '../servicios/servicios';
-//import {OpcionalesPage} from '../opcionales/opcionales';
+import { BarcodeScanner, BarcodeScannerOptions } from '@ionic-native/barcode-scanner';
+import { ServiciosPage } from '../servicios/servicios';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
-  
+    selector: 'page-home',
+    templateUrl: 'home.html',
+
 })
 export class HomePage {
 
-  scanData : {};
-  encodeData : string ;
-encodedData : {} ;
-options :BarcodeScannerOptions;
+    scanData: {};
+    options: BarcodeScannerOptions;
 
+    constructor(public navCtrl: NavController,
+        public navParams: NavParams,
+        private barcodeScanner: BarcodeScanner) { }
 
-constructor(public navCtrl: NavController, 
-            public navParams: NavParams,
-            private barcodeScanner: BarcodeScanner) { }
-    
-
-scan(){
-     this.options = {
-        prompt : "Escanee su codigoQR"
+    scan() {
+        this.options = {
+            formats : "QR_CODE",
+            resultDisplayDuration: 100,
+            showTorchButton : true,
+            prompt: "Escanee el codigoQR"
+        }
+        this.barcodeScanner.scan(this.options).then((barcodeData) => {
+            console.log(barcodeData.text);
+            this.servicios(barcodeData.text);
+        }, (err) => {
+            console.log("Error occured : " + err);
+        });
     }
-    this.barcodeScanner.scan(this.options).then((barcodeData) => {
 
-        console.log(barcodeData);
-        this.scanData = barcodeData;
-    }, (err) => {
-        console.log("Error occured : " + err);
-    });         
-}
+    servicios(ubicacion: string) {
+        this.navCtrl.push(ServiciosPage, {
+            ubicacion: ubicacion
+        });
+    }
 
-servicios(){
-       this.navCtrl.push(ServiciosPage);
-}
-/*
-servicios(){
-    this.navCtrl.push(OpcionalesPage);
-}*/
-
-encodeText(){
-    this.barcodeScanner.encode(this.barcodeScanner.Encode.TEXT_TYPE,this.encodeData).then((encodedData) => {
-
-        console.log(encodedData);
-        this.encodedData = encodedData;
-        this.navCtrl.push(ServiciosPage);
-    }, (err) => {
-        console.log("Error occured : " + err);
-    });                 
-}
 }

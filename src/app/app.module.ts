@@ -14,7 +14,7 @@ import { AcercaPage } from '../pages/acerca/acerca';
 
 import { Camera } from '@ionic-native/camera';
 import {OpcionalesPage} from '../pages/opcionales/opcionales';
-
+import {ConfirmacionPage} from '../pages/confirmacion/confirmacion';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpModule } from '@angular/http';
@@ -34,7 +34,8 @@ import { DatabaseMySqlProvider } from '../providers/database-my-sql/database-my-
     ValoracionesPage,
     ServiciosPage,
     OpcionalesPage,
-    AcercaPage
+    AcercaPage,
+    ConfirmacionPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import { DatabaseMySqlProvider } from '../providers/database-my-sql/database-my-
     ServiciosPage,
     ValoracionesPage,
     OpcionalesPage,
-    AcercaPage
+    AcercaPage,
+    ConfirmacionPage
   ],
   providers: [
     StatusBar,

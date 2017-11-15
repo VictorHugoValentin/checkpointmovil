@@ -1,15 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Camera , CameraOptions} from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
-
-/**
- * Generated class for the OpcionalesPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { DatabaseMySqlProvider } from '../../providers/database-my-sql/database-my-sql';
+import {ConfirmacionPage} from '../../pages/confirmacion/confirmacion';
+import { DatabaseProvider } from '../../providers/database/database';
 
 @IonicPage()
 @Component({
@@ -21,49 +17,121 @@ export class OpcionalesPage {
   sampleForm: FormGroup;
   termsAgree: boolean;
   private base64Image: string;
-  descripcion: number;
-  foto: number;
-  email: number;
- 
+  permite_descripcion: number;
+  permite_foto: number;
+  permite_email: number;
+  valoracion_actual: string;
 
-  constructor(public navCtrl: NavController, 
+  email: string;
+  descripcion: string;
+
+  idservicio: number;
+  idvaloracion: number;
+
+  nombreServicio: string;
+  nombreValoracion: string;
+
+
+  constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private camara: Camera) {
-      this.permiteDescripcion(this.navParams.get('descripcion'));
-      this.permiteFoto(this.navParams.get('foto'));
-      this.permiteEmail(this.navParams.get('email'));
+              private camara: Camera,
+              private mysql: DatabaseMySqlProvider,
+              private sqlite: DatabaseProvider) {
+              this.base64Image="null";
+              this.email=null;
+              this.descripcion=null;
+              this.valoracion_actual = this.navParams.get('valoracion_actual');
+              this.idservicio = this.navParams.get('idservicio');
+              this.idvaloracion = this.navParams.get('idvaloracion');
+    this.permiteDescripcion(this.navParams.get('descripcion'));
+    this.permiteFoto(this.navParams.get('foto'));
+    this.permiteEmail(this.navParams.get('email'));
   }
 
-  permiteDescripcion(descripcion: number){
-      this.descripcion = descripcion;
-      console.log("DESCRIPCION: "+this.descripcion);
+  permiteDescripcion(descripcion: number) {
+    this.permite_descripcion = descripcion;
   }
 
-  permiteFoto(foto: number){
-    this.foto = foto;
-    console.log("FOTO: "+this.foto);
+  permiteFoto(foto: number) {
+    this.permite_foto = foto;
   }
 
-  permiteEmail(email: number){
-    this.email = email;
-    console.log("EMAIL: "+this.email);
+  permiteEmail(email: number) {
+    this.permite_email = email;
   }
 
-  tomarFoto(){
+  tomarFoto() {
     const options: CameraOptions = {
       quality: 20,
       destinationType: this.camara.DestinationType.FILE_URI,
       encodingType: this.camara.EncodingType.JPEG,
       mediaType: this.camara.MediaType.PICTURE
     }
-    
+
     this.camara.getPicture(options).then((imageData) => {
-     // imageData is either a base64 encoded string or a file URI
-     // If it's base64:
-     this.base64Image =  imageData;
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64:
+      this.base64Image = imageData;
     }, (err) => {
-     // Handle error
+      // Handle error
     });
+  }
+  validarValoracion(servicio: number, valoracion: number){
+    var existe: number;
+    this.mysql.validarValoracion(servicio,valoracion).subscribe(res =>
+      existe = res
+    );
+    return existe;
+  }
+
+  devolverNombreServicio(idservicio: number){
+    this.sqlite.getNombreServicio(idservicio).then(res =>{
+      this.nombreServicio = res,
+      console.log("NOMBRE SERVICIO EN METODO: "+this.nombreServicio)
+    }
+    );
+  }
+
+  devolverNombreValoracion(idvaloracion: number){
+    this.sqlite.getNombreValoracion(idvaloracion).then(res =>{
+      this.nombreValoracion =  res,
+      console.log("NOMBRE VALORACION EN METODO: "+this.nombreValoracion)
+    }
+    );
+  }
+
+  concatenarValoracionActual(){
+    var existe: number=0;
+    if(this.base64Image!="null"){
+      this.valoracion_actual = this.valoracion_actual+'"foto":"'+this.base64Image+'",';
+    } else{
+      this.valoracion_actual = this.valoracion_actual+'"foto":"null",';
+    }
+    if(this.descripcion!=null){
+      this.valoracion_actual = this.valoracion_actual+'"descripcion":"'+this.descripcion+'",';
+    } else{
+      this.valoracion_actual = this.valoracion_actual+'"descripcion":"null",';
+    }
+    if(this.email!=null){
+      this.valoracion_actual = this.valoracion_actual+'"email":"'+this.email+'"}]';
+    } else{
+      this.valoracion_actual = this.valoracion_actual+'"email":"null"}]';
+    }
+    existe=this.validarValoracion(this.idservicio, this.idvaloracion);
+    if(existe!=0){
+      console.log("NOMBRE SERVICIO: "+this.nombreServicio);
+      console.log("NOMBRE VALORACION: "+this.nombreValoracion);
+      this.navCtrl.push(ConfirmacionPage, {
+        servicio: this.nombreServicio,
+        valoracion: this.nombreValoracion,
+        foto: this.base64Image,
+        email: this.email,
+        descripcion: this.descripcion,
+        valoracion_actual: this.valoracion_actual
+      });
+    }else{
+      console.log("NO EXISTE VALORACION O SERVICIO");
+    }
   }
 
   ionViewDidLoad() {
@@ -71,23 +139,22 @@ export class OpcionalesPage {
   }
 
   //Metodso para validar FORMULARIO (email)
-  
-ionViewWillLoad() {
+
+  ionViewWillLoad() {
     this.termsAgree = true;
- 
+
     this.sampleForm = new FormGroup({
       email: new FormControl('', Validators.compose([
-        Validators.required,
         Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
       ]))
     });
- 
+
     this.sampleForm.valueChanges
       .debounceTime(400)
       .subscribe(data => this.onValueChanged(data));
-}
+  }
 
-onValueChanged(data?: any) {
+  onValueChanged(data?: any) {
     if (!this.sampleForm) { return; }
     const form = this.sampleForm;
     for (const field in this.formErrors) {
@@ -102,15 +169,15 @@ onValueChanged(data?: any) {
         }
       }
     }
-}
+  }
 
-formErrors = {
+  formErrors = {
     'email': []
-};
- 
-validationMessages = {
+  };
+
+  validationMessages = {
     'email': {
-      'pattern':       'Formato invalido'
+      'pattern': 'Formato invalido'
     },
-};
+  };
 }
