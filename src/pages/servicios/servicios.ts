@@ -41,9 +41,12 @@ export class ServiciosPage {
     }
   }
 
-  valoraciones(servicio: number) {
+  valoraciones(servicio: number, descripcion: string, nombre: string, icono: number) {
     this.navCtrl.push(ValoracionesPage, {
-      servicio: servicio,
+      idservicio: servicio,
+      iconoservicio: icono,
+      nombreservicio: nombre,
+      descripcion: descripcion,
       ubicacion: this.ubicacion
     });
   }

@@ -231,9 +231,12 @@ var ServiciosPage = (function () {
             });
         }
     };
-    ServiciosPage.prototype.valoraciones = function (servicio) {
+    ServiciosPage.prototype.valoraciones = function (servicio, descripcion, nombre, icono) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__valoraciones_valoraciones__["a" /* ValoracionesPage */], {
-            servicio: servicio,
+            idservicio: servicio,
+            iconoservicio: icono,
+            nombreservicio: nombre,
+            descripcion: descripcion,
             ubicacion: this.ubicacion
         });
     };
@@ -241,7 +244,7 @@ var ServiciosPage = (function () {
 }());
 ServiciosPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-servicios',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\servicios\servicios.html"*/`<ion-header>\n    <ion-navbar>\n        <ion-title>\n            <img src="assets/img/logo.png" width="30" height="40" />\n        </ion-title>\n        <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid>\n        <ion-row text-center>\n            <ion-col col-3 col-md-2 col-xl-2 *ngFor="let icono of iconos">\n                <div class="image-container" [style.background-image]="\'url(assets/servicios/\'+icono.iconoservicio+\'.png)\'" (click)="valoraciones(icono.idservicio)"></div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n        <ion-title>Servicios</ion-title>\n    </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\servicios\servicios.html"*/,
+        selector: 'page-servicios',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\servicios\servicios.html"*/`<ion-header>\n    <ion-navbar>\n        <ion-title>\n            <img src="assets/img/logo.png" width="30" height="40" />\n        </ion-title>\n        <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n    </ion-navbar>\n</ion-header>\n\n<ion-content>\n    <ion-grid>\n        <ion-row text-center>\n            <ion-col col-3 col-md-2 col-xl-2 *ngFor="let icono of iconos">\n                <div class="image-container" [style.background-image]="\'url(assets/servicios/\'+icono.iconoservicio+\'.png)\'" (click)="valoraciones(icono.idservicio,icono.descripcionservicio,icono.nombreservicio,icono.iconoservicio)"></div>\n                <div class="servicio">{{icono.nombreservicio}}</div>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n        <ion-title>Servicios</ion-title>\n    </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\servicios\servicios.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -280,7 +283,10 @@ var ValoracionesPage = (function () {
         this.navParams = navParams;
         this.databaseProvider = databaseProvider;
         this.ubicacion = this.navParams.get('ubicacion');
-        this.getValoraciones(this.navParams.get('servicio'));
+        this.descripcionservicio = this.navParams.get('descripcion');
+        this.nombreservicio = this.navParams.get('nombreservicio');
+        this.iconoservicio = this.navParams.get('iconoservicio');
+        this.getValoraciones(this.navParams.get('idservicio'));
     }
     //CONTROLAR LOS CASOS EN LOS QUE EL SERVICIO NO TIENE VALORAICONES 
     //(no tendria q estar habilitado desde WEB APP)
@@ -317,7 +323,7 @@ var ValoracionesPage = (function () {
 }());
 ValoracionesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-valoraciones',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list>\n    <ion-item *ngFor="let valoracion of valoraciones">\n      <div (click)="opcionales(valoracion.descripcion,valoracion.foto,valoracion.email,valoracion.idvaloracion)">\n        <h1>{{valoracion.nombrevaloracion}}</h1>\n      </div>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Valoraciones</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/,
+        selector: 'page-valoraciones',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title>\n        <ion-grid>\n          <ion-row align-items-center>\n            <ion-col col-auto>\n              <img src="assets/servicios/{{iconoservicio}}.png"/>\n            </ion-col>\n            <ion-col col-7>\n              <h1>{{nombreservicio}}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col col-12>\n                <p>{{descripcionservicio}}</p>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-title>\n    </ion-card-content>\n  </ion-card>\n  <ion-list>\n    <ion-item *ngFor="let valoracion of valoraciones">\n      <div (click)="opcionales(valoracion.descripcion,valoracion.foto,valoracion.email,valoracion.idvaloracion)">\n        <h1>{{valoracion.nombrevaloracion}}</h1>\n      </div>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Valoraciones</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -548,19 +554,19 @@ var map = {
 		4
 	],
 	"../pages/opcionales/opcionales.module": [
-		583,
+		586,
 		3
 	],
 	"../pages/servicios/servicios.module": [
-		584,
+		583,
 		2
 	],
 	"../pages/ub-manual/ub-manual.module": [
-		585,
+		584,
 		0
 	],
 	"../pages/valoraciones/valoraciones.module": [
-		586,
+		585,
 		1
 	]
 };
@@ -727,10 +733,10 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/acerca/acerca.module#AcercaPageModule', name: 'AcercaPage', segment: 'acerca', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/confirmacion/confirmacion.module#ConfirmacionPageModule', name: 'ConfirmacionPage', segment: 'confirmacion', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/opcionales/opcionales.module#OpcionalesPageModule', name: 'OpcionalesPage', segment: 'opcionales', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/servicios/servicios.module#ServiciosPageModule', name: 'ServiciosPage', segment: 'servicios', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/ub-manual/ub-manual.module#UbManualPageModule', name: 'UbManualPage', segment: 'ub-manual', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/valoraciones/valoraciones.module#ValoracionesPageModule', name: 'ValoracionesPage', segment: 'valoraciones', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/valoraciones/valoraciones.module#ValoracionesPageModule', name: 'ValoracionesPage', segment: 'valoraciones', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/opcionales/opcionales.module#OpcionalesPageModule', name: 'OpcionalesPage', segment: 'opcionales', priority: 'low', defaultHistory: [] }
                 ]
             }),
         ],
@@ -785,10 +791,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DatabaseMySqlProvider = (function () {
-    //api: string = "http://192.168.0.136/checkpointA/";
     function DatabaseMySqlProvider(http) {
         this.http = http;
-        this.api = "http://10.0.1.140/checkpointA/";
+        //api: string = "http://10.0.1.140/checkpointA/";
+        this.api = "http://192.168.0.136/checkpointA/";
     }
     DatabaseMySqlProvider.prototype.getServicios = function () {
         return this.http.get(this.api + "listarServicios.php").map(function (res) { return res.json(); });
@@ -813,18 +819,18 @@ var DatabaseMySqlProvider = (function () {
         }).map(function (res) { return res.json(); });
     };
     DatabaseMySqlProvider.prototype.insertarValoracion = function (valoracion) {
-        console.log("VALROACION_ACTUAL EN INSERTAR MYSQL: " + valoracion);
+        //console.log("VALROACION_ACTUAL EN INSERTAR MYSQL: " + valoracion);
         var valoracionHecha;
         valoracionHecha = JSON.parse(valoracion);
         var ubicacionValoracion = valoracionHecha[0].ubicacionValoracion;
         var foto = valoracionHecha[0].foto;
         var descripcion = valoracionHecha[0].descripcion;
         var email = valoracionHecha[0].email;
-        console.log("DATOS SUELTOS----------- ");
+        /*console.log("DATOS SUELTOS----------- " );
         console.log(ubicacionValoracion);
         console.log(foto);
         console.log(descripcion);
-        console.log(email);
+        console.log(email);*/
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this.http.post(this.api + 'insertarvaloracion.php', { idUbicacionValoracion: ubicacionValoracion,
             foto: foto,
@@ -923,11 +929,13 @@ var DatabaseProvider = (function () {
     };
     DatabaseProvider.prototype.setServicios = function (servicios) {
         var data;
+        console.log("DESCRIPCION ENTRANDO: " + servicios[0].descripcionservicio);
         for (var i = 0; i < servicios.length; i++) {
-            data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio, iconoservicio)"
-                + " VALUES (?, ?, ?)", [servicios[i].idservicio,
+            data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio, iconoservicio, descripcionservicio)"
+                + " VALUES (?, ?, ?, ?)", [servicios[i].idservicio,
                 servicios[i].nombreservicio,
-                servicios[i].iconoservicio]);
+                servicios[i].iconoservicio,
+                servicios[i].descripcionservicio]);
         }
         return data;
     };
@@ -935,13 +943,14 @@ var DatabaseProvider = (function () {
         var data;
         for (var i = 0; i < valoraciones.length; i++) {
             data = this.database.executeSql("INSERT INTO valoraciones (idvaloracion, nombrevaloracion,"
-                + " descripcion, foto, email, servicio)"
-                + " VALUES (?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion,
+                + " descripcion, foto, email, servicio, descripcionvaloracion)"
+                + " VALUES (?, ?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion,
                 valoraciones[i].nombrevaloracion,
-                valoraciones[i].descripcion,
-                valoraciones[i].foto,
-                valoraciones[i].email,
-                valoraciones[i].servicio]);
+                valoraciones[i].permite_descripcion,
+                valoraciones[i].permite_foto,
+                valoraciones[i].permite_email,
+                valoraciones[i].servicio,
+                valoraciones[i].descripcion]);
         }
         return data;
     };
@@ -985,7 +994,8 @@ var DatabaseProvider = (function () {
                     }
                     servicios = servicios.concat('{"idservicio": "' + data.rows.item(i).idservicio + '",');
                     servicios = servicios.concat('"nombreservicio": "' + data.rows.item(i).nombreservicio + '",');
-                    servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '"}');
+                    servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '",');
+                    servicios = servicios.concat('"descripcionservicio": "' + data.rows.item(i).descripcionservicio + '"}');
                 }
                 servicios = servicios.concat("]");
             }
@@ -1012,6 +1022,7 @@ var DatabaseProvider = (function () {
                     }
                     servicios = servicios.concat('{"idservicio": "' + data.rows.item(i).idservicio + '",');
                     servicios = servicios.concat('"nombreservicio": "' + data.rows.item(i).nombreservicio + '",');
+                    servicios = servicios.concat('"descripcionservicio": "' + data.rows.item(i).descripcionservicio + '",');
                     servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '"}');
                 }
                 servicios = servicios.concat("]");
@@ -1072,7 +1083,8 @@ var DatabaseProvider = (function () {
                     valoraciones = valoraciones.concat('"nombrevaloracion": "' + data.rows.item(i).nombrevaloracion + '",');
                     valoraciones = valoraciones.concat('"descripcion": "' + data.rows.item(i).descripcion + '",');
                     valoraciones = valoraciones.concat('"foto": "' + data.rows.item(i).foto + '",');
-                    valoraciones = valoraciones.concat('"email": "' + data.rows.item(i).email + '"}');
+                    valoraciones = valoraciones.concat('"email": "' + data.rows.item(i).email + '",');
+                    valoraciones = valoraciones.concat('"descripcionvaloracion": "' + data.rows.item(i).descripcionvaloracion + '"}');
                 }
                 valoraciones = valoraciones.concat("]");
             }

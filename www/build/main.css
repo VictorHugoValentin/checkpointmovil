@@ -39848,6 +39848,18 @@ ion-footer .toolbar-title {
   color: white;
 }
 
+page-home {
+  /*ion-header::after {
+          background: rgba(255,255,255,50);
+          background-image: none !important;
+        }
+        .toolbar {
+          .toolbar-background{
+            background: rgba(255,255,255,50);
+          }
+        }*/
+}
+
 page-opcionales .term {
   padding-top: 20px;
 }
@@ -39868,4 +39880,18 @@ page-opcionales .alert {
 page-servicios .image-container {
   background-size: cover;
   min-height: 75px;
+}
+
+page-servicios .servicio {
+  color: #3D3327;
+  font-style: italic;
+}
+
+page-valoraciones .image-container {
+  background-size: cover;
+  min-height: 18vh;
+}
+
+page-valoraciones p {
+  text-align: justify;
 }

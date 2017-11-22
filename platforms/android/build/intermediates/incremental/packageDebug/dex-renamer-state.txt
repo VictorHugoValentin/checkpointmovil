@@ -1,4 +1,4 @@
-#Tue Nov 14 19:02:58 ART 2017
+#Wed Nov 22 20:14:18 ART 2017
 base.0=C\:\\Users\\mailo\\Desktop\\Appcheck\\lectoQR2\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\Users\\mailo\\Desktop\\Appcheck\\lectoQR2\\platforms\\android\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

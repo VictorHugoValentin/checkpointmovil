@@ -13,11 +13,17 @@ export class ValoracionesPage {
   valoracion_actual: string;
   ubicacion: string;
   ubicacionValoracion: Array<any>;
+  descripcionservicio: string;
+  nombreservicio: string;
+  iconoservicio: number;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams, 
               public databaseProvider: DatabaseProvider) {
               this.ubicacion = this.navParams.get('ubicacion');
-    this.getValoraciones(this.navParams.get('servicio'));
+              this.descripcionservicio = this.navParams.get('descripcion');
+              this.nombreservicio = this.navParams.get('nombreservicio');
+              this.iconoservicio = this.navParams.get('iconoservicio');
+    this.getValoraciones(this.navParams.get('idservicio'));
   }
   
   //CONTROLAR LOS CASOS EN LOS QUE EL SERVICIO NO TIENE VALORAICONES 

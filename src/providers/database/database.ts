@@ -62,11 +62,13 @@ export class DatabaseProvider {
 
   setServicios(servicios: Array<any>) {
     var data
+    console.log("DESCRIPCION ENTRANDO: "+servicios[0].descripcionservicio);
     for (var i = 0; i < servicios.length; i++) {
-      data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio, iconoservicio)"
-        + " VALUES (?, ?, ?)", [servicios[i].idservicio,
+      data = this.database.executeSql("INSERT INTO servicios (idservicio, nombreservicio, iconoservicio, descripcionservicio)"
+        + " VALUES (?, ?, ?, ?)", [servicios[i].idservicio,
         servicios[i].nombreservicio,
-        servicios[i].iconoservicio]);
+        servicios[i].iconoservicio,
+        servicios[i].descripcionservicio]);
     }
     return data;
   }
@@ -75,13 +77,14 @@ export class DatabaseProvider {
     var data;
     for (var i = 0; i < valoraciones.length; i++) {
       data = this.database.executeSql("INSERT INTO valoraciones (idvaloracion, nombrevaloracion,"
-        + " descripcion, foto, email, servicio)"
-        + " VALUES (?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion,
+        + " descripcion, foto, email, servicio, descripcionvaloracion)"
+        + " VALUES (?, ?, ?, ?, ?, ?, ?)", [valoraciones[i].idvaloracion,
         valoraciones[i].nombrevaloracion,
-        valoraciones[i].descripcion,
-        valoraciones[i].foto,
-        valoraciones[i].email,
-        valoraciones[i].servicio]);
+        valoraciones[i].permite_descripcion,
+        valoraciones[i].permite_foto,
+        valoraciones[i].permite_email,
+        valoraciones[i].servicio,
+        valoraciones[i].descripcion]);
     }
     return data;
   }
@@ -129,7 +132,8 @@ export class DatabaseProvider {
             }
             servicios = servicios.concat('{"idservicio": "' + data.rows.item(i).idservicio + '",');
             servicios = servicios.concat('"nombreservicio": "' + data.rows.item(i).nombreservicio + '",');
-            servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '"}');
+            servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '",');
+            servicios = servicios.concat('"descripcionservicio": "' + data.rows.item(i).descripcionservicio + '"}');
           }
           servicios = servicios.concat("]");
         }
@@ -157,6 +161,7 @@ export class DatabaseProvider {
             }
             servicios = servicios.concat('{"idservicio": "' + data.rows.item(i).idservicio + '",');
             servicios = servicios.concat('"nombreservicio": "' + data.rows.item(i).nombreservicio + '",');
+            servicios = servicios.concat('"descripcionservicio": "' + data.rows.item(i).descripcionservicio + '",');
             servicios = servicios.concat('"iconoservicio": "' + data.rows.item(i).iconoservicio + '"}');
           }
           servicios = servicios.concat("]");
@@ -221,7 +226,8 @@ export class DatabaseProvider {
             valoraciones = valoraciones.concat('"nombrevaloracion": "' + data.rows.item(i).nombrevaloracion + '",');
             valoraciones = valoraciones.concat('"descripcion": "' + data.rows.item(i).descripcion + '",');
             valoraciones = valoraciones.concat('"foto": "' + data.rows.item(i).foto + '",');
-            valoraciones = valoraciones.concat('"email": "' + data.rows.item(i).email + '"}');
+            valoraciones = valoraciones.concat('"email": "' + data.rows.item(i).email + '",');
+            valoraciones = valoraciones.concat('"descripcionvaloracion": "' + data.rows.item(i).descripcionvaloracion + '"}');
           }
           valoraciones = valoraciones.concat("]");
         }

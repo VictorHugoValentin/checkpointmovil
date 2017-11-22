@@ -13,7 +13,8 @@
     <ion-grid>
         <ion-row text-center>
             <ion-col col-3 col-md-2 col-xl-2 *ngFor="let icono of iconos">
-                <div class="image-container" [style.background-image]="'url(assets/servicios/'+icono.iconoservicio+'.png)'" (click)="valoraciones(icono.idservicio)"></div>
+                <div class="image-container" [style.background-image]="'url(assets/servicios/'+icono.iconoservicio+'.png)'" (click)="valoraciones(icono.idservicio,icono.descripcionservicio,icono.nombreservicio,icono.iconoservicio)"></div>
+                <div class="servicio">{{icono.nombreservicio}}</div>
             </ion-col>
         </ion-row>
     </ion-grid>
