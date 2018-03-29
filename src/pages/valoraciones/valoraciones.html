@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
+<ion-card>
     <ion-card-content>
       <ion-card-title>
         <ion-grid>
@@ -31,6 +31,7 @@
       </ion-card-title>
     </ion-card-content>
   </ion-card>
+
   <ion-list>
     <ion-item *ngFor="let valoracion of valoraciones">
       <div (click)="opcionales(valoracion.descripcion,valoracion.foto,valoracion.email,valoracion.idvaloracion)">

@@ -43,6 +43,9 @@ export class OpcionalesPage {
               this.valoracion_actual = this.navParams.get('valoracion_actual');
               this.idservicio = this.navParams.get('idservicio');
               this.idvaloracion = this.navParams.get('idvaloracion');
+              console.log("ID SERVICIO EN CONSTRUCTOR OPCIONALES: "+this.idservicio);
+              this.devolverNombreServicio(this.idservicio);
+              this.devolverNombreValoracion(this.idvaloracion);
     this.permiteDescripcion(this.navParams.get('descripcion'));
     this.permiteFoto(this.navParams.get('foto'));
     this.permiteEmail(this.navParams.get('email'));
@@ -117,10 +120,9 @@ export class OpcionalesPage {
     } else{
       this.valoracion_actual = this.valoracion_actual+'"email":"null"}]';
     }
-    existe=this.validarValoracion(this.idservicio, this.idvaloracion);
-    if(existe!=0){
-      console.log("NOMBRE SERVICIO: "+this.nombreServicio);
-      console.log("NOMBRE VALORACION: "+this.nombreValoracion);
+     
+   // existe=this.validarValoracion(this.idservicio, this.idvaloracion);
+    //if(existe!=0){
       this.navCtrl.push(ConfirmacionPage, {
         servicio: this.nombreServicio,
         valoracion: this.nombreValoracion,
@@ -129,9 +131,9 @@ export class OpcionalesPage {
         descripcion: this.descripcion,
         valoracion_actual: this.valoracion_actual
       });
-    }else{
-      console.log("NO EXISTE VALORACION O SERVICIO");
-    }
+   // }else{
+     // console.log("NO EXISTE VALORACION O SERVICIO");
+   // }
   }
 
   ionViewDidLoad() {

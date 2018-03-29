@@ -167,7 +167,7 @@ var ConfirmacionPage = (function () {
 }());
 ConfirmacionPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-confirmacion',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\confirmacion\confirmacion.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n    <ion-grid>\n        <ion-row>\n            <ion-col col-4>\n              Servicio:\n              </ion-col>\n              <ion-col col-8>\n                  {{servicio}}\n              </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                Valoracion:\n                </ion-col>\n                <ion-col col-8>\n                    {{valoracion}}\n                </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                Foto:\n                </ion-col>\n                <ion-col col-8>\n                    {{foto}}\n                </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                email:\n                </ion-col>\n                <ion-col col-8>\n                    {{email}}\n                </ion-col>  \n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                descripcion:\n                </ion-col>\n                <ion-col col-8>\n                    {{descripcion}}\n                </ion-col>  \n        </ion-row>\n  <ion-row>\n    <ion-col col-12 col-sm>\n       <button color="verdea" ion-button icon-only full large (click)="confirmar()"> \n          CONFIRMAR\n          <ion-icon name="checkmark"></ion-icon> \n       </button>\n    </ion-col>\n </ion-row>\n <ion-row>\n    <ion-col col-12 col-sm>\n       <button color="verdea" ion-button icon-only full large (click)="cancelar()"> \n          CANCELAR    \n          <ion-icon name="close"></ion-icon>\n       </button>\n    </ion-col>\n  </ion-row>\n</ion-grid>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Confirmación</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\confirmacion\confirmacion.html"*/,
+        selector: 'page-confirmacion',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\confirmacion\confirmacion.html"*/`<ion-header>\n    <ion-navbar>\n        <ion-title>\n            <img src="assets/img/logo.png" width="30" height="40" />\n        </ion-title>\n        <button ion-button menuToggle end>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid>\n        <ion-row>\n            <ion-col col-4>\n                Servicio:\n            </ion-col>\n            <ion-col col-8>\n                {{servicio}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                Valoracion:\n            </ion-col>\n            <ion-col col-8>\n                {{valoracion}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                Foto:\n            </ion-col>\n            <ion-col col-8>\n                <img src={{foto}} width="180" height="90" />\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                email:\n            </ion-col>\n            <ion-col col-8>\n                {{email}}\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-4>\n                descripcion:\n            </ion-col>\n            <ion-col col-8>\n                {{descripcion}}\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n\n    <ion-grid>\n        <ion-row>\n            <ion-col col-12 col-sm>\n                <button color="verdea" ion-button icon-only full large (click)="confirmar()"> \n          CONFIRMAR\n          <ion-icon name="checkmark"></ion-icon> \n       </button>\n            </ion-col>\n        </ion-row>\n        <ion-row>\n            <ion-col col-12 col-sm>\n                <button color="verdea" ion-button icon-only full large (click)="cancelar()"> \n          CANCELAR    \n          <ion-icon name="close"></ion-icon>\n       </button>\n            </ion-col>\n        </ion-row>\n    </ion-grid>\n</ion-content>\n\n<ion-footer>\n    <ion-toolbar>\n        <ion-title>Confirmación</ion-title>\n    </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\confirmacion\confirmacion.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -323,7 +323,7 @@ var ValoracionesPage = (function () {
 }());
 ValoracionesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-valoraciones',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-card>\n    <ion-card-content>\n      <ion-card-title>\n        <ion-grid>\n          <ion-row align-items-center>\n            <ion-col col-auto>\n              <img src="assets/servicios/{{iconoservicio}}.png"/>\n            </ion-col>\n            <ion-col col-7>\n              <h1>{{nombreservicio}}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col col-12>\n                <p>{{descripcionservicio}}</p>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-title>\n    </ion-card-content>\n  </ion-card>\n  <ion-list>\n    <ion-item *ngFor="let valoracion of valoraciones">\n      <div (click)="opcionales(valoracion.descripcion,valoracion.foto,valoracion.email,valoracion.idvaloracion)">\n        <h1>{{valoracion.nombrevaloracion}}</h1>\n      </div>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Valoraciones</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/,
+        selector: 'page-valoraciones',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n<ion-card>\n    <ion-card-content>\n      <ion-card-title>\n        <ion-grid>\n          <ion-row align-items-center>\n            <ion-col col-auto>\n              <img src="assets/servicios/{{iconoservicio}}.png"/>\n            </ion-col>\n            <ion-col col-7>\n              <h1>{{nombreservicio}}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col col-12>\n                <p>{{descripcionservicio}}</p>\n            </ion-col>\n          </ion-row>\n        </ion-grid>\n      </ion-card-title>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-list>\n    <ion-item *ngFor="let valoracion of valoraciones">\n      <div (click)="opcionales(valoracion.descripcion,valoracion.foto,valoracion.email,valoracion.idvaloracion)">\n        <h1>{{valoracion.nombrevaloracion}}</h1>\n      </div>\n    </ion-item>\n  </ion-list>\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Valoraciones</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\valoraciones\valoraciones.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -386,6 +386,9 @@ var OpcionalesPage = (function () {
         this.valoracion_actual = this.navParams.get('valoracion_actual');
         this.idservicio = this.navParams.get('idservicio');
         this.idvaloracion = this.navParams.get('idvaloracion');
+        console.log("ID SERVICIO EN CONSTRUCTOR OPCIONALES: " + this.idservicio);
+        this.devolverNombreServicio(this.idservicio);
+        this.devolverNombreValoracion(this.idvaloracion);
         this.permiteDescripcion(this.navParams.get('descripcion'));
         this.permiteFoto(this.navParams.get('foto'));
         this.permiteEmail(this.navParams.get('email'));
@@ -456,22 +459,19 @@ var OpcionalesPage = (function () {
         else {
             this.valoracion_actual = this.valoracion_actual + '"email":"null"}]';
         }
-        existe = this.validarValoracion(this.idservicio, this.idvaloracion);
-        if (existe != 0) {
-            console.log("NOMBRE SERVICIO: " + this.nombreServicio);
-            console.log("NOMBRE VALORACION: " + this.nombreValoracion);
-            this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages_confirmacion_confirmacion__["a" /* ConfirmacionPage */], {
-                servicio: this.nombreServicio,
-                valoracion: this.nombreValoracion,
-                foto: this.base64Image,
-                email: this.email,
-                descripcion: this.descripcion,
-                valoracion_actual: this.valoracion_actual
-            });
-        }
-        else {
-            console.log("NO EXISTE VALORACION O SERVICIO");
-        }
+        // existe=this.validarValoracion(this.idservicio, this.idvaloracion);
+        //if(existe!=0){
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__pages_confirmacion_confirmacion__["a" /* ConfirmacionPage */], {
+            servicio: this.nombreServicio,
+            valoracion: this.nombreValoracion,
+            foto: this.base64Image,
+            email: this.email,
+            descripcion: this.descripcion,
+            valoracion_actual: this.valoracion_actual
+        });
+        // }else{
+        // console.log("NO EXISTE VALORACION O SERVICIO");
+        // }
     };
     OpcionalesPage.prototype.ionViewDidLoad = function () {
         console.log('ionViewDidLoad OpcionalesPage');
@@ -511,7 +511,7 @@ var OpcionalesPage = (function () {
 }());
 OpcionalesPage = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-        selector: 'page-opcionales',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\opcionales\opcionales.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="form-content">\n\n  <!-- INICIO del formulario -->\n  <form [formGroup]="sampleForm" class="form" >\n<!--(ngSubmit)="onSubmit(sampleForm.value)"-->\n    <!-- INICIO del boton fotografia -->\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <ion-label stacked>Fotografia</ion-label>\n          <img [src]="base64Image" />\n        </ion-col>\n        <ion-col>\n          <div *ngIf="permite_foto==1">\n            <ion-label stacked></ion-label>\n            <button ion-button color="verdea" icon-right full large (click)="tomarFoto()">\n                    <ion-icon name="camera">\n                    </ion-icon>\n                  </button>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <!-- FIN  del boton fotografia -->\n\n    <!-- INICIO  del campo email -->\n    <ion-item *ngIf="permite_email==1">\n      <ion-label floating>Email</ion-label>\n      <ion-input type="email"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>\n    </ion-item>\n    <div *ngIf="formErrors.email">\n      <div *ngFor="let errors of formErrors.email">\n        <p class="alert">{{ errors }}\n          <p>\n      </div>\n    </div>\n    <!-- FIN  del campo email -->\n\n    <!-- INICIO  del campo descripcion -->\n    <ion-item *ngIf="permite_descripcion==1" >\n      <ion-label floating>Descripcion</ion-label>\n      <ion-input type="text" [(ngModel)]="descripcion" [ngModelOptions]="{standalone: true}"></ion-input>\n    </ion-item>\n    <!-- FIN  del campo descripcion -->\n\n    <!-- Botón que envía datos opcionales de valoracion -->\n    <button ion-button full type="submit" color="verdea" [disabled]="!sampleForm.valid" (click)="concatenarValoracionActual()">VALORAR</button>\n\n  </form>\n  <!-- FIN del formulario -->\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Opcionales</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\opcionales\opcionales.html"*/,
+        selector: 'page-opcionales',template:/*ion-inline-start:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\opcionales\opcionales.html"*/`<ion-header>\n  <ion-navbar>\n    <ion-title>\n      <img src="assets/img/logo.png" width="30" height="40" />\n    </ion-title>\n    <button ion-button menuToggle end>\n                        <ion-icon name="menu"></ion-icon>\n                    </button>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="form-content">\n\n  <!-- INICIO del formulario -->\n  <form [formGroup]="sampleForm" class="form" >\n<!--(ngSubmit)="onSubmit(sampleForm.value)"-->\n    <!-- INICIO del boton fotografia -->\n    <ion-grid>\n      <ion-row>\n        <ion-col>\n          <ion-label stacked>Fotografia</ion-label>\n          <img [src]="base64Image" />\n        </ion-col>\n        <ion-col>\n          <div *ngIf="permite_foto==1">\n            <ion-label stacked></ion-label>\n            <button ion-button color="verdea" icon-right full large (click)="tomarFoto()">\n                    <ion-icon name="camera">\n                    </ion-icon>\n                  </button>\n          </div>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n    <!-- FIN  del boton fotografia -->\n\n    <!-- INICIO  del campo email -->\n    <ion-item *ngIf="permite_email==1">\n      <ion-label floating>Email</ion-label>\n      <ion-input type="email"  [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>\n    </ion-item>\n    <div *ngIf="formErrors.email">\n      <div *ngFor="let errors of formErrors.email">\n        <p class="alert">{{ errors }}\n          <p>\n      </div>\n    </div>\n    <!-- FIN  del campo email -->\n\n    <!-- INICIO  del campo descripcion -->\n    <ion-item *ngIf="permite_descripcion==1" >\n      <ion-label floating>Descripcion</ion-label>\n      <ion-input type="text" [(ngModel)]="descripcion" [ngModelOptions]="{standalone: true}"></ion-input>\n    </ion-item>\n    <!-- FIN  del campo descripcion -->\n\n    <!-- Botón que envía datos opcionales de valoracion -->\n    <button ion-button full type="submit" color="verdea"  (click)="concatenarValoracionActual()">VALORAR</button>\n<!--[disabled]="!sampleForm.valid"-->\n  </form>\n  <!-- FIN del formulario -->\n</ion-content>\n\n<ion-footer>\n  <ion-toolbar>\n    <ion-title>Opcionales</ion-title>\n  </ion-toolbar>\n</ion-footer>`/*ion-inline-end:"C:\Users\mailo\Desktop\Appcheck\lectoQR2\src\pages\opcionales\opcionales.html"*/,
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
@@ -554,15 +554,15 @@ var map = {
 		4
 	],
 	"../pages/opcionales/opcionales.module": [
-		586,
+		584,
 		3
 	],
 	"../pages/servicios/servicios.module": [
-		583,
+		586,
 		2
 	],
 	"../pages/ub-manual/ub-manual.module": [
-		584,
+		583,
 		0
 	],
 	"../pages/valoraciones/valoraciones.module": [
@@ -733,10 +733,10 @@ AppModule = __decorate([
                 links: [
                     { loadChildren: '../pages/acerca/acerca.module#AcercaPageModule', name: 'AcercaPage', segment: 'acerca', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/confirmacion/confirmacion.module#ConfirmacionPageModule', name: 'ConfirmacionPage', segment: 'confirmacion', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/servicios/servicios.module#ServiciosPageModule', name: 'ServiciosPage', segment: 'servicios', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/ub-manual/ub-manual.module#UbManualPageModule', name: 'UbManualPage', segment: 'ub-manual', priority: 'low', defaultHistory: [] },
+                    { loadChildren: '../pages/opcionales/opcionales.module#OpcionalesPageModule', name: 'OpcionalesPage', segment: 'opcionales', priority: 'low', defaultHistory: [] },
                     { loadChildren: '../pages/valoraciones/valoraciones.module#ValoracionesPageModule', name: 'ValoracionesPage', segment: 'valoraciones', priority: 'low', defaultHistory: [] },
-                    { loadChildren: '../pages/opcionales/opcionales.module#OpcionalesPageModule', name: 'OpcionalesPage', segment: 'opcionales', priority: 'low', defaultHistory: [] }
+                    { loadChildren: '../pages/servicios/servicios.module#ServiciosPageModule', name: 'ServiciosPage', segment: 'servicios', priority: 'low', defaultHistory: [] }
                 ]
             }),
         ],
@@ -791,10 +791,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var DatabaseMySqlProvider = (function () {
+    //api: string = "http://192.168.0.136/checkpointA/";
+    //api: string = "http://10.0.1.199/checkpointA/";
     function DatabaseMySqlProvider(http) {
         this.http = http;
-        //api: string = "http://10.0.1.140/checkpointA/";
-        this.api = "http://192.168.0.136/checkpointA/";
+        this.api = "http://10.0.1.140/checkpointA/";
     }
     DatabaseMySqlProvider.prototype.getServicios = function () {
         return this.http.get(this.api + "listarServicios.php").map(function (res) { return res.json(); });
@@ -819,18 +820,18 @@ var DatabaseMySqlProvider = (function () {
         }).map(function (res) { return res.json(); });
     };
     DatabaseMySqlProvider.prototype.insertarValoracion = function (valoracion) {
-        //console.log("VALROACION_ACTUAL EN INSERTAR MYSQL: " + valoracion);
+        console.log("VALROACION_ACTUAL EN INSERTAR MYSQL: " + valoracion);
         var valoracionHecha;
         valoracionHecha = JSON.parse(valoracion);
         var ubicacionValoracion = valoracionHecha[0].ubicacionValoracion;
         var foto = valoracionHecha[0].foto;
         var descripcion = valoracionHecha[0].descripcion;
         var email = valoracionHecha[0].email;
-        /*console.log("DATOS SUELTOS----------- " );
+        console.log("DATOS SUELTOS----------- ");
         console.log(ubicacionValoracion);
         console.log(foto);
         console.log(descripcion);
-        console.log(email);*/
+        console.log(email);
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded' });
         return this.http.post(this.api + 'insertarvaloracion.php', { idUbicacionValoracion: ubicacionValoracion,
             foto: foto,

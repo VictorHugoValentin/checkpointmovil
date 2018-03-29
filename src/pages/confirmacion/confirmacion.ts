@@ -20,7 +20,8 @@ export class ConfirmacionPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private mysql: DatabaseMySqlProvider) {
+              public mysql: DatabaseMySqlProvider) 
+              {
               this.valoracion_actual = this.navParams.get('valoracion_actual');
               this.servicio = this.navParams.get('servicio');
               this.valoracion = this.navParams.get('valoracion');
@@ -42,7 +43,7 @@ export class ConfirmacionPage {
     console.log('ionViewDidLoad ConfirmacionPage');
   }
 
-  confirmar(){
+ confirmar(){
     console.log("VALORACION_ACTUAL CONFIRMAR: "+this.valoracion_actual);
     this.mysql.insertarValoracion(this.valoracion_actual);
     this.navCtrl.push(HomePage);
